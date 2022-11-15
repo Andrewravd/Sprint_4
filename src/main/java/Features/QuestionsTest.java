@@ -5,11 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.fail;
 
 
 public class QuestionsTest {
@@ -37,10 +33,5 @@ public class QuestionsTest {
         driver.get("https://qa-scooter.praktikum-services.ru/");
         mainPage.clickOnCookieButton();
         mainPage.checkAnswer();
-
-
-
-
-
     }
 }
