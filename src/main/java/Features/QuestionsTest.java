@@ -6,7 +6,10 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.fail;
 
 
 public class QuestionsTest {
@@ -23,9 +26,10 @@ public class QuestionsTest {
     }
     //закрываем браузер после прохождения теста
     @After
-    public void tearDown() {
+    public void tearDown()  {
         driver.quit();
-    }
+        }
+
 //сам тест
     @Test
     public void test() throws InterruptedException {

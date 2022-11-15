@@ -1,5 +1,6 @@
 package Pages;
 
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -17,8 +18,10 @@ import java.time.Duration;
 import static org.junit.Assert.assertEquals;
 
 
+
 public class MainPage {
     public WebDriver driver;
+    protected StringBuffer verificationErrors = new StringBuffer();
     //создаем массив с ожидаемым текстом ответов на вопросы
     String[] question = {"Сутки — 400 рублей. Оплата курьеру — наличными или картой.", "Пока что у нас так: один заказ " +
             "— один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."
@@ -72,11 +75,13 @@ public class MainPage {
             new WebDriverWait(driver, Duration.ofSeconds(10))
                     .until(ExpectedConditions.visibilityOf(answers.get(i)));
             String text = answers.get(i).getText();
-            assertEquals(question[i], text);
-
+            try {
+                assertEquals(question[i], text);
+            }  catch (Throwable e) {
+                System.out.println("Exception: "
+                        + e.toString());
+            }
 
         }
-
     }
 }
-
