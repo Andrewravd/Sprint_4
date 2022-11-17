@@ -24,7 +24,6 @@ public class OrderTest {
     public WebDriver driver;
     private final String makeOrder;
 
-
     //создаем конструктор
     public OrderTest(String name, String surname, String makeOrder, String adresse, String metro, String number, String date, String comment) {
         this.name = name;
@@ -36,13 +35,14 @@ public class OrderTest {
         this.date = date;
         this.makeOrder = makeOrder;
     }
+
     //указываем тестовые данные
     @Parameterized.Parameters// добавили аннотацию
     public static Object[][] data() {
         return new Object[][]{
                 {"Андрей", "Андреев", ".//button[@class='Button_Button__ra12g']", "молодежная 1", "Черкизовская", "89872342211", "13.12.2022", "тест1"},
-                {"Антон", "Антонов", ".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']","молодежная 2", "Сокольники", "89872342212", "14.12.2022", "тест2"},
-                {"Игорь", "Игорев",".//button[@class='Button_Button__ra12g']", "молодежная 3", "Комсомольская", "89872342213", "15.12.2022", "тест3"},
+                {"Антон", "Антонов", ".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']", "молодежная 2", "Сокольники", "89872342212", "14.12.2022", "тест2"},
+                {"Игорь", "Игорев", ".//button[@class='Button_Button__ra12g']", "молодежная 3", "Комсомольская", "89872342213", "15.12.2022", "тест3"},
         };
     }
 
@@ -55,6 +55,7 @@ public class OrderTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+
     //закрываем браузер после прохождения теста
     @After
     public void tearDown() {
