@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import static org.junit.Assert.assertEquals;
 
-
 public class OrderPage {
     public WebDriver driver;
 

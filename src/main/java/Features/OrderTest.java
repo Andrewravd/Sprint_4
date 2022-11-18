@@ -83,7 +83,6 @@ public class OrderTest {
         orderPage.clickButtonYes();
         orderPage.checkStatusOrder();
     }
-
 }
 
 

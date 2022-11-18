@@ -40,7 +40,7 @@ public class MainPage {
         cookieButton.click();
     }
 
-    //метод клика по кнопке "Заказать" в верхнем правом углу экрана
+    //метод клика по кнопке "Заказать" в верхнем углу экрана
     public void clickOnButtonMakeOrder(String string) {
         driver.findElement(By.xpath(string)).click();
 
@@ -62,7 +62,6 @@ public class MainPage {
                 System.out.println("Exception: "
                         + e);
             }
-
         }
     }
 }
