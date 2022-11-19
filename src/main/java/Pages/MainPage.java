@@ -14,17 +14,6 @@ import static org.junit.Assert.assertEquals;
 
 public class MainPage {
     public WebDriver driver;
-    //создаем массив с ожидаемым текстом ответов на вопросы
-    String[] question = {"Сутки — 400 рублей. Оплата курьеру — наличными или картой.", "Пока что у нас так: один заказ " +
-            "— один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."
-            , "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды" +
-            " начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда" +
-            " закончится 9 мая в 20:30.", "Только начиная с завтрашнего дня. Но скоро станем расторопнее.", "Пока что нет!" +
-            " Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.", "Самокат приезжает к" +
-            " вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка" +
-            " не понадобится.", "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. " +
-            "Все же свои.", "Да, обязательно. Всем самокатов! И Москве, и Московской области."
-            ,};
 
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -46,22 +35,18 @@ public class MainPage {
 
     }
 
-    //метод проверки текста ответов на вопросы
-    public void clickOnQuestionAndCheckAnswer() throws InterruptedException {
-        List<WebElement> questions = driver.findElements(By.xpath(".//div[@class='accordion__item']"));
-        List<WebElement> answers = driver.findElements(By.xpath(".//div[@class='accordion__item']//p"));
-        for (int i = 0; i < questions.size(); i++) {
-            questions.get(i).click();
+    //метод проверки отображения ответов на странице
+    public void checkThatQuestionIsDisplayed(String xpath, String result) throws InterruptedException {
+        WebElement question = driver.findElement(By.xpath(xpath));
+        WebElement answer = driver.findElement(By.xpath(result));
+        question.click();
             TimeUnit.SECONDS.sleep(1);
             new WebDriverWait(driver, Duration.ofSeconds(10))
-                    .until(ExpectedConditions.visibilityOf(answers.get(i)));
-            String text = answers.get(i).getText();
-            try {
-                assertEquals(question[i], text);
-            } catch (Throwable e) {
-                System.out.println("Exception: "
-                        + e);
-            }
-        }
+                    .until(ExpectedConditions.visibilityOf(answer));
+
+    }
+    public void checkText(String expected, String result) {
+        String text = driver.findElement(By.xpath(result)).getText();
+        assertEquals(expected, text );
     }
 }
